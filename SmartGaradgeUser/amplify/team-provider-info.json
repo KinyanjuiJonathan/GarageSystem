@@ -1,0 +1,23 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-smartgaradgeapp-dev-161332-authRole",
+      "UnauthRoleArn": "arn:aws:iam::059458054072:role/amplify-smartgaradgeapp-dev-161332-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::059458054072:role/amplify-smartgaradgeapp-dev-161332-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-smartgaradgeapp-dev-161332-deployment",
+      "UnauthRoleName": "amplify-smartgaradgeapp-dev-161332-unauthRole",
+      "StackName": "amplify-smartgaradgeapp-dev-161332",
+      "StackId": "arn:aws:cloudformation:us-east-1:059458054072:stack/amplify-smartgaradgeapp-dev-161332/0164e330-7f9f-11ed-a98a-12ea2fb7402b",
+      "AmplifyAppId": "d2kq3gioilkeo8"
+    },
+    "categories": {
+      "auth": {
+        "SmartGaradgeApp": {}
+      },
+      "storage": {
+        "s3smartgaradgeappstorage1ae647fc": {}
+      }
+    }
+  }
+}

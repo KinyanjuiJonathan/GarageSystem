@@ -1,0 +1,91 @@
+enum TransportationModes {
+  DRIVING
+  BICYCLING
+}
+
+type Courier @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String!
+  sub: String!
+  lat: Float
+  lng: Float
+  transportationMode: TransportationModes
+}
+
+enum OrderStatus {
+  NEW
+  INPROGRESS
+  READY_FOR_PICKUP
+  PICKED_UP
+  COMPLETED
+  ACCEPTED
+  DECLINED
+}
+
+type Basket @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  BasketServices: [BasketService] @hasMany(indexName: "byBasket", fields: ["id"])
+  userID: ID! @index(name: "byUser")
+  garadgeID: ID! @index(name: "byGaradge")
+}
+
+type Order @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  total: Float!
+  OrderServices: [OrderService] @hasMany(indexName: "byOrder", fields: ["id"])
+  Garadge: Garadge @hasOne
+  status: OrderStatus!
+  userID: ID! @index(name: "byUser")
+  Courier: Courier @hasOne
+}
+
+type Garadge @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String!
+  image: String!
+  deliveryFee: Float!
+  minDeliveryTime: Int!
+  maxDeliveryTime: Int!
+  rating: Float!
+  address: String!
+  lat: Float!
+  lng: Float!
+  Services: [Basket] @hasMany(indexName: "byGaradge", fields: ["id"])
+  Baskets: [Basket] @hasMany(indexName: "byGaradge", fields: ["id"])
+  adminSub: String
+}
+
+type BasketService @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  quantity: Int!
+  basketID: ID! @index(name: "byBasket")
+  Service: Service @hasOne
+}
+
+type User @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  sub: String!
+  name: String!
+  address: String!
+  lat: Float!
+  lng: Float!
+  Orders: [Basket] @hasMany(indexName: "byUser", fields: ["id"])
+  Baskets: [Basket] @hasMany(indexName: "byUser", fields: ["id"])
+}
+
+type OrderService @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  quantity: Int!
+  orderID: ID! @index(name: "byOrder")
+  Service: Service @hasOne
+}
+
+type Service @model @auth(rules: [{allow: public, operations: [create, read, update]}]) {
+  id: ID!
+  name: String!
+  image: String!
+  description: String
+  price: Float!
+  garadgeID: ID! @index(name: "byGaradge")
+}
+ 

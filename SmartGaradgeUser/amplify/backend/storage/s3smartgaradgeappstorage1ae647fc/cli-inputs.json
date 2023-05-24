@@ -1,0 +1,12 @@
+{
+  "resourceName": "s3smartgaradgeappstorage1ae647fc",
+  "bucketName": "smartgaradgeapp-storage-1ae647fc",
+  "policyUUID": "341e986d",
+  "storageAccess": "auth",
+  "guestAccess": [],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ]
+}
